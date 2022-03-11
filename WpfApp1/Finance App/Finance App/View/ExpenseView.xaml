@@ -36,7 +36,7 @@
                                         <Condition Binding="{Binding ElementName=txtExpenseDescription, Path=IsFocused}" Value="False" />
                                         <Condition Binding="{Binding ElementName=txtExpenseDescription, Path=Text.IsEmpty}" Value="True" />
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="Text" Value="Enter Income"/>
+                                    <Setter Property="Text" Value="Enter Expense"/>
                                 </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>

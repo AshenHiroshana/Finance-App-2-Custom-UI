@@ -43,11 +43,11 @@ namespace Finance_App.View
             Button button = sender as Button;
             if (clickedButton != null)
             {
-                Style? style1 = this.FindResource("MaterialDesignOutlinedButton") as Style;
+                Style? style1 = this.FindResource("OutlinedButton") as Style;
                 clickedButton.Style = style1;
             }
             clickedButton = button;
-            Style? style2 = this.FindResource("MaterialDesignFlatDarkBgButton") as Style;
+            Style? style2 = this.FindResource("FlatDarkBgButton") as Style;
             button.Style = style2;
 
             string selectedCatagory = (string)button.ToolTip;
@@ -263,7 +263,7 @@ namespace Finance_App.View
 
             if (clickedButton != null)
             {
-                Style? style1 = this.FindResource("MaterialDesignOutlinedButton") as Style;
+                Style? style1 = this.FindResource("OutlinedButton") as Style;
                 clickedButton.Style = style1;
             }
 
@@ -279,13 +279,12 @@ namespace Finance_App.View
             selectedIcon.Children.Clear();
             Button button = sender as Button;
             icon = button.Name;
-            MaterialDesignThemes.Wpf.PackIcon packIcon = Common.FindPackIcon(icon);
+            Viewbox packIcon = Common.FindIcon(icon, false);
             packIcon.Width = 20;
             packIcon.Height = 20;
             packIcon.VerticalAlignment = VerticalAlignment.Center;
             packIcon.HorizontalAlignment = HorizontalAlignment.Center;
             packIcon.Margin = new Thickness(450, 0, 0, 11);
-            packIcon.Foreground = new SolidColorBrush(Color.FromRgb(92, 184, 92));
             selectedIcon.Children.Add(packIcon);
         }
 
@@ -362,7 +361,7 @@ namespace Finance_App.View
             for (int i = 0; i < catagories.Count; i++)
             {
 
-                Style? style = this.FindResource("MaterialDesignOutlinedButton") as Style;
+                Style? style = this.FindResource("OutlinedButton") as Style;
                 Button button = Common.CreateCatagoryButton(catagories[i].Name, catagories[i].Icon, style);
                 button.Click += new RoutedEventHandler(Button_Is_Click);
                 // button.Click += new EventHandler(Catagory_Is_Click);
