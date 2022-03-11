@@ -85,7 +85,6 @@ namespace Finance_App.View
 
                     PieSeries pieSeries = new PieSeries();
                     pieSeries.Title = catagory.Name;
-                    pieSeries.ToolTip = Common.FindPackIcon(catagory.Icon);
                     pieSeries.Values = new ChartValues<ObservableValue> { new ObservableValue(amount) };
                     pieSeries.DataLabels = true;
                     seriesCollection.Add(pieSeries);
@@ -147,7 +146,6 @@ namespace Finance_App.View
 
                     PieSeries pieSeries = new PieSeries();
                     pieSeries.Title = catagory.Name;
-                    pieSeries.ToolTip = Common.FindPackIcon(catagory.Icon);
                     pieSeries.Values = new ChartValues<ObservableValue> { new ObservableValue(amount) };
                     pieSeries.DataLabels = true;
                     seriesCollection.Add(pieSeries);

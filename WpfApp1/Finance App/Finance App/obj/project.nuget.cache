@@ -1,13 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "a2wglcO7+q42TocvCeRYzeW8xyx2y0FRbbMstxPEm3+c1LeYm1tZAN2wZJRDlreWqPutNqlcfh3gkC7z7N4yeg==",
+  "dgSpecHash": "qJZ9steALFTqAU6Wy0Bqtbxu5Odfef7BSkfrx1Q2Dl3Gl7vdpVZUGp2sYBsnYHuMtluWmW0la9tbX3r0dkpQLg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ashen\\source\\repos\\Finance-App-2\\WpfApp1\\Finance App\\Finance App\\Finance App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ashen\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
-    "C:\\Users\\Ashen\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
-    "C:\\Users\\Ashen\\.nuget\\packages\\materialdesigncolors\\2.0.4\\materialdesigncolors.2.0.4.nupkg.sha512",
-    "C:\\Users\\Ashen\\.nuget\\packages\\materialdesignthemes\\4.3.0\\materialdesignthemes.4.3.0.nupkg.sha512"
+    "C:\\Users\\Ashen\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512"
   ],
   "logs": [
     {

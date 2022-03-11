@@ -163,5 +163,7 @@ namespace Finance_App
                 DataContext = new PredictionView();
 
         }
+
+        
     }
 }

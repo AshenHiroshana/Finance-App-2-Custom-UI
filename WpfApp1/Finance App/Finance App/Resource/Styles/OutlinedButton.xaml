@@ -40,7 +40,7 @@
     <Style TargetType="{x:Type Button}" x:Key="FlatDarkBgButton">
 
         <Style.Setters>
-            <Setter Property="Background" Value="#5200a0"/>
+            <Setter Property="Background" Value="#8220a0"/>
 
             <Setter Property="Foreground" Value="White"/>
 
@@ -130,6 +130,48 @@
 
        
     </Style>
+
+
+    <Style TargetType="{x:Type ComboBox}" x:Key="OutlinedComboBox">
+
+        <Style.Setters>
+            <Setter Property="Background" Value="Transparent"/>
+
+            <Setter Property="BorderThickness" Value="1"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Height" Value="55"/>
+
+
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style.Setters>
+
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="10" />
+            </Style>
+
+        </Style.Resources>
+
+
+
+    </Style>
+    
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Border CornerRadius="5">
+                       
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 
 

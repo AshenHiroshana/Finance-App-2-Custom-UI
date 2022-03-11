@@ -77,7 +77,7 @@
                     <DatePicker 
                        Style="{StaticResource OutlinedDatePicker}" 
                         VerticalContentAlignment="Center"
-                        Padding="10 10 0 0"
+                        Padding="10 0 10 0"
                         FontSize="16"
                         Foreground="#aaa"
                         Margin="0"

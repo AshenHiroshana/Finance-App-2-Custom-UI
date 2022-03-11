@@ -63,47 +63,7 @@ namespace Finance_App.View
 
         }
 
-        public static MaterialDesignThemes.Wpf.PackIcon FindPackIcon(string name)
-        {
-            switch (name)
-            {
-                case "Home":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Home };
-
-                case "Car":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Car };
-
-                case "Travel":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Travel };
-
-                case "Food":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Food };
-
-                case "TshirtCrewOutline":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.TshirtCrewOutline };
-
-                case "Pill":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Pill };
-
-                case "FuelPump":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.FuelPump };
-
-                case "BabyFaceOutline":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.BabyFaceOutline };
-
-                case "QuestionMark":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.QuestionMark };
-
-                case "AddCircle":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.AddCircle };
-                case "Dollar":
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Dollar };
-
-                default:
-                    return new MaterialDesignThemes.Wpf.PackIcon { Kind = MaterialDesignThemes.Wpf.PackIconKind.Home };
-
-            }
-        }
+       
 
 
         public static Viewbox FindIcon(string name, Boolean colorDefault = true)
