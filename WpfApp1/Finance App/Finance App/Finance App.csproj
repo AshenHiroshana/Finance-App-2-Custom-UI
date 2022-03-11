@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Finance_App</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <PackageIcon>dollar-sign-vector-1502745.jpg</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resource\home.png" />
+    <None Remove="Resource\mountains.jpg" />
+    <None Remove="Resource\WalletAddOutline.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\Documents\dollar-sign-vector-1502745.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\home.png" />
+    <Resource Include="Resource\mountains.jpg" />
+    <Resource Include="Resource\WalletAddOutline.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,154 @@
+﻿<Window x:Class="Finance_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Finance_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="490" Width="1000"
+        MinHeight="490"
+        MinWidth="1000"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip" Background="{x:Null}"
+        AllowsTransparency="True"
+        MouseLeftButtonDown="dragMe" >
+
+
+    <Grid>
+        <Border Margin="10" CornerRadius="15" Background="#fefefe">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Grid Grid.ColumnSpan="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="0 10 50 0">
+                        <ComboBox Text="Select a Filter"
+                             
+                            
+                             FontSize="15"
+                             Height="55"
+                                  SelectionChanged="changeSelectedFilter"
+                                  Margin="10 0"
+                             Width="200"
+
+                             x:Name="cmbFilter"
+                             >
+                            <ComboBoxItem Name="filterByDate">Filter by Date</ComboBoxItem>
+                            <ComboBoxItem Name="filterByMonth" IsSelected="True">Filter by Month</ComboBoxItem>
+                            <ComboBoxItem Name="filterByYear">Filter by Year</ComboBoxItem>
+                        </ComboBox>
+                        
+                        <DatePicker 
+                             
+                             Text="Select a Date"
+                             FontSize="15"
+                            SelectedDateChanged="changeSelectedDate"
+                            Height="55"
+                             Width="190"
+                            Margin="30 0"
+                             Name="txtIncomeDate"
+                        >
+
+                        </DatePicker>   
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="0 0 0 0" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+
+                    <StackPanel>
+
+
+                        <ListView Name="menuList" SelectionChanged="ListView_SelectionChanged" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                            <ListViewItem IsSelected="True" Name="Home" Height="45" Padding="0">
+                                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                                    <Image Width="30" Source="/Resource/home.png" />
+
+
+                                        
+                                    <TextBlock Text="Home" Margin="10"/>
+                                    </StackPanel>
+                            </ListViewItem>
+                            
+                            <ListViewItem Name="Income" Height="45" Padding="0" >
+                                <StackPanel Orientation="Horizontal" Margin="10 0">
+                                    <Image Width="20" Source="/Resource/WalletAddOutline.png" />
+                                    <TextBlock Text="Income" Margin="10"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Name="Expence" Height="45" Padding="0" Selected="Expences_Selected">
+                                <StackPanel Orientation="Horizontal" Margin="10 0">
+                                    <materialDesign:PackIcon Kind="Dollar" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Expense" Margin="10"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Name="Prediction" Height="45" Padding="0">
+                                <StackPanel Orientation="Horizontal" Margin="10 0">
+                                    <materialDesign:PackIcon Kind="Report" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Coming Month" Margin="10"/>
+                                </StackPanel>
+                            </ListViewItem>
+
+                            <ListViewItem Height="45" Padding="0">
+                                <StackPanel Orientation="Horizontal" Margin="10 0">
+                                    <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Settings" Margin="10"/>
+                                </StackPanel>
+                            </ListViewItem>
+                        </ListView>
+                    </StackPanel>
+
+                </Grid>
+
+                <Ellipse Fill="#D00" 
+                     Grid.Column="1"
+                     Height="15"
+                     Width="15"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Top"
+                     Margin="0,10,10,0" 
+                     MouseLeftButtonDown="closeApp" 
+                     ToolTip="Close"
+                     Cursor="Hand" MouseEnter="closeHoverON" MouseLeave="closeHoverOFF"/>
+
+                <Ellipse Fill="#DD0" 
+                     Grid.Column="1"
+                     Height="15"
+                     Width="15"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Top"
+                     Margin="0,10,30,0" 
+                     MouseLeftButtonDown="minimizeApp" 
+                     ToolTip="Minimize" 
+                     MouseEnter="minimizeHoverON"
+                     Cursor="Hand" MouseLeave="minimizeHoverOFF"/>
+
+
+                <ContentControl Content="{Binding}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            />
+
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</Window>
