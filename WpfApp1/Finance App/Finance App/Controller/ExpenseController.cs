@@ -2,6 +2,7 @@
 using Finance_App.View;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,7 @@ namespace Finance_App.Controller
             expense.Id = findExpenseId();
             expenseList.Add(expense);
 
-            string jsonString = JsonSerializer.Serialize(expenseList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.expenseList = expenseList;
 
 
         }
@@ -48,11 +45,7 @@ namespace Finance_App.Controller
 
             fullExpenseList.Remove(oldExpense);
 
-            string jsonString = JsonSerializer.Serialize(fullExpenseList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.expenseList = fullExpenseList;
 
         }
 
@@ -74,11 +67,7 @@ namespace Finance_App.Controller
             fullExpenseList.Remove(oldExpense);
             fullExpenseList.Add(newExpense);
 
-            string jsonString = JsonSerializer.Serialize(fullExpenseList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.expenseList = fullExpenseList;
 
 
         }
@@ -86,13 +75,8 @@ namespace Finance_App.Controller
         public List<Transaction> GetExpenseListByFilter()
         {
 
-            try
-            {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/ExpenseList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
 
-                List<Transaction> expenseList = JsonSerializer.Deserialize<List<Transaction>>(json)!;
+                List<Transaction> expenseList = GetExpenseList();
 
                 List<Transaction> filteredExpenseList = new List<Transaction>();
                 foreach (Transaction item in expenseList)
@@ -119,39 +103,34 @@ namespace Finance_App.Controller
                             filteredExpenseList.Add(item);
                         }
                     }
+                    else if (Common.selectedFilter == "filterByWeek")
+                    {
+                        int week = GetWeekOfYear(itemDate);
+                        if (GetWeekOfYear(Common.selectedDate) == GetWeekOfYear(itemDate))
+                        {
+                            filteredExpenseList.Add(item);
+                        }
+                    }
 
-                }
+            }
 
                 List<Transaction> expenseList2 = filteredExpenseList.OrderByDescending(x => x.Date).ToList();
 
 
                 return expenseList2;
-            }
-            catch (Exception ex)
-            {
-                List<Transaction> expenseList = new List<Transaction>();
-                return expenseList;
-            }
+           
 
         }
 
         public List<Transaction> GetExpenseList()
         {
-            try
+            if(PreData.expenseList == null)
             {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/ExpenseList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
-
-                List<Transaction> expenseList = JsonSerializer.Deserialize<List<Transaction>>(json)!;
-
-                return expenseList;
+                PreData.expenseList = new List<Transaction>();
             }
-            catch (Exception ex)
-            {
-                List<Transaction> expenseList = new List<Transaction>();
-                return expenseList;
-            }
+                
+            return PreData.expenseList;
+        
         }
 
         public int findExpenseId()
@@ -168,6 +147,16 @@ namespace Finance_App.Controller
             }
             return ++id;
 
+        }
+        public static int GetWeekOfYear(DateTime time)
+        {
+            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
+            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+            {
+                time = time.AddDays(3);
+            }
+
+            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
     }

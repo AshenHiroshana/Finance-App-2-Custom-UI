@@ -19,7 +19,7 @@ namespace Finance_App.View
     {
 
         public static DateTime selectedDate = DateTime.Today;
-        public static string selectedFilter = "filterByMonth";
+        public static string selectedFilter = "filterByWeek";
 
 
 

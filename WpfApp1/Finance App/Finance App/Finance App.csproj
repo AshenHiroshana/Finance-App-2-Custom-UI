@@ -10,12 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resource\home.png" />
-    <None Remove="Resource\mountains.jpg" />
-    <None Remove="Resource\WalletAddOutline.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\..\..\..\..\Documents\dollar-sign-vector-1502745.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -24,12 +18,6 @@
 
   <ItemGroup>
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resource\home.png" />
-    <Resource Include="Resource\mountains.jpg" />
-    <Resource Include="Resource\WalletAddOutline.png" />
   </ItemGroup>
 
 </Project>

@@ -49,7 +49,7 @@
                     <TextBox 
                              Style="{StaticResource OutlinedTextBox}" 
                              FontSize="15"
-                             Padding="30 0 0 0"
+                             Padding="0 0 0 0"
                              x:Name="txtExpenseDescription"
                              >
 

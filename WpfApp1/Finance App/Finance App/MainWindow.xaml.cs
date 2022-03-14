@@ -1,4 +1,5 @@
-﻿using Finance_App.View;
+﻿using Finance_App.Controller;
+using Finance_App.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Finance_App
         public MainWindow()
         {
             InitializeComponent();
+            PreData preData = new PreData();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -6,23 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Finance_App.Controller
 {
     public class CatagoryController
     {
 
+        
+
         public void SaveIncomeCatagory(Catagory catagory)
         {
 
-            List<Catagory> catagories = GetIncomeCatagory();
-            catagories.Add(catagory);
-
-            string jsonString = JsonSerializer.Serialize(catagories);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeCatagoryList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            //List<Catagory> catagories = GetIncomeCatagory();
+            PreData.incomeCatagories.Add(catagory);
+ 
 
         }
 
@@ -31,37 +29,32 @@ namespace Finance_App.Controller
 
             try
             {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/IncomeCatagoryList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
-
-                List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
-
-
-                return catagories;
-            }
-            catch (Exception ex2)
-            {
-                try
+                if (PreData.incomeCatagories == null)
                 {
                     StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/OriginalIncomeCatagoryList.txt");
                     String json = reader.ReadToEnd();
                     reader.Close();
 
-                    StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeCatagoryList.txt");
-                    writer.Write(json);
-                    writer.Close();
+                    PreData.incomeCatagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
+                   
 
-                    List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
-
-
-                    return catagories;
+                    return PreData.incomeCatagories;
                 }
-                catch (Exception ex)
+                else
                 {
-                    List<Catagory> incomeList = new List<Catagory>();
-                    return incomeList;
+                    
+                    return PreData.incomeCatagories;
+
+
                 }
+            }
+            catch (Exception ex2)
+            {
+                
+                PreData.incomeCatagories = new List<Catagory>();
+                return PreData.incomeCatagories;
+
+
             }
 
         }
@@ -71,14 +64,7 @@ namespace Finance_App.Controller
         public void SaveExpenseCatagory(Catagory catagory)
         {
 
-            List<Catagory> catagories = GetExpenseCatagory();
-            catagories.Add(catagory);
-
-            string jsonString = JsonSerializer.Serialize(catagories);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseCatagoryList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.expenseCatagories.Add(catagory);
 
         }
 
@@ -87,37 +73,31 @@ namespace Finance_App.Controller
 
             try
             {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/ExpenseCatagoryList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
-
-                List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
-               
-
-                return catagories;
-            }
-            catch (Exception ex)
-            {
-                try
+                if (PreData.expenseCatagories == null)
                 {
                     StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/OriginalExpenseCatagoryList.txt");
                     String json = reader.ReadToEnd();
                     reader.Close();
 
-                    StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/ExpenseCatagoryList.txt");
-                    writer.Write(json);
-                    writer.Close();
-
-                    List<Catagory> catagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
+                    PreData.expenseCatagories = JsonSerializer.Deserialize<List<Catagory>>(json)!;
 
 
-                    return catagories;
+                    return PreData.expenseCatagories;
                 }
-                catch (Exception ex2)
+                else
                 {
-                    List<Catagory> expenseList = new List<Catagory>();
-                    return expenseList;
+
+                    return PreData.expenseCatagories;
+
+
                 }
+            }
+            catch (Exception ex)
+            {
+                
+                    PreData.expenseCatagories = new List<Catagory>();
+                    return PreData.expenseCatagories;
+                
             }
 
         }

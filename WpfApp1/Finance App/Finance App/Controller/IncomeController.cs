@@ -2,6 +2,7 @@
 using Finance_App.View;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,7 @@ namespace Finance_App.Controller
             income.Id = findIncomeId();
             incomeList.Add(income);
 
-            string jsonString = JsonSerializer.Serialize(incomeList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.incomeList = incomeList;
 
 
         }
@@ -47,11 +44,7 @@ namespace Finance_App.Controller
 
             fullIncomeList.Remove(oldIncome);
 
-            string jsonString = JsonSerializer.Serialize(fullIncomeList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.incomeList = fullIncomeList;
 
 
         }
@@ -74,11 +67,7 @@ namespace Finance_App.Controller
             fullIncomeList.Remove(oldIncome);
             fullIncomeList.Add(newIncome);
 
-            string jsonString = JsonSerializer.Serialize(fullIncomeList);
-
-            StreamWriter writer = new StreamWriter("C:/Users/Ashen/Desktop/IncomeList.txt");
-            writer.Write(jsonString);
-            writer.Close();
+            PreData.incomeList = fullIncomeList;
 
 
         }
@@ -86,19 +75,16 @@ namespace Finance_App.Controller
         public List<Transaction> GetIncomeListByFilter()
         {
 
-            try
-            {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/IncomeList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
-
-                List<Transaction> incomeList = JsonSerializer.Deserialize<List<Transaction>>(json)!;
+                
+                   
+                List<Transaction> incomeList = GetIncomeList();
 
                 List<Transaction> filteredIncomeList = new List<Transaction>();
                 foreach (Transaction item in incomeList)
                 {
                     DateTime itemDate = (DateTime)item.Date;
-                    if (Common.selectedFilter == "filterByDate")
+                    
+                if (Common.selectedFilter == "filterByDate")
                     {
                         if (Common.selectedDate.Month == itemDate.Month && Common.selectedDate.Year == itemDate.Year && Common.selectedDate.Day == itemDate.Date.Day)
                         {
@@ -118,38 +104,33 @@ namespace Finance_App.Controller
                             filteredIncomeList.Add(item);
                         }
                     }
-                
-                }
+                    else if (Common.selectedFilter == "filterByWeek")
+                    {
+                        int week = GetWeekOfYear(itemDate);
+                        if (GetWeekOfYear(Common.selectedDate) == GetWeekOfYear(itemDate))
+                        {
+                            filteredIncomeList.Add(item);
+                        }
+                    }
+
+            }
 
                 List<Transaction> incomeList2 = filteredIncomeList.OrderByDescending(x => x.Date).ToList();
                
 
                 return incomeList2;
-            }catch (Exception ex)
-            {
-                List<Transaction> incomeList = new List<Transaction>();
-                return incomeList;
-            }
+           
 
         }
 
         public List<Transaction> GetIncomeList()
         {
-            try
+            if (PreData.incomeList == null)
             {
-                StreamReader reader = new StreamReader("C:/Users/Ashen/Desktop/IncomeList.txt");
-                String json = reader.ReadToEnd();
-                reader.Close();
-
-                List<Transaction> incomeList = JsonSerializer.Deserialize<List<Transaction>>(json)!;
-
-                return incomeList;
+                PreData.incomeList = new List<Transaction>();
             }
-            catch (Exception ex)
-            {
-                List<Transaction> incomeList = new List<Transaction>();
-                return incomeList;
-            }
+
+            return PreData.incomeList;
         }
 
         public int findIncomeId()
@@ -166,6 +147,18 @@ namespace Finance_App.Controller
             }
             return ++id;
            
+        }
+
+
+        public static int GetWeekOfYear(DateTime time)
+        {
+            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
+            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+            {
+                time = time.AddDays(3);
+            }
+
+            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
     }

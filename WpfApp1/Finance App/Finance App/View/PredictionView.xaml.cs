@@ -50,7 +50,7 @@ namespace Finance_App.View
             LiveCharts.SeriesCollection seriesCollection = new LiveCharts.SeriesCollection();
 
             IncomeController incomeController = new IncomeController();
-            List<Transaction> incomeList = incomeController.GetIncomeList();
+            List<Transaction> incomeList = incomeController.GetIncomeListByFilter();
 
             List<Catagory> catagories = new List<Catagory>();
             Catagory newCatagory = new Catagory();
@@ -122,7 +122,7 @@ namespace Finance_App.View
             LiveCharts.SeriesCollection seriesCollection = new LiveCharts.SeriesCollection();
 
             ExpenseController expenseController = new ExpenseController();
-            List<Transaction> expenseList = expenseController.GetExpenseList();
+            List<Transaction> expenseList = expenseController.GetExpenseListByFilter();
 
             List<Catagory> catagories = new List<Catagory>();
             Catagory newCatagory = new Catagory();
