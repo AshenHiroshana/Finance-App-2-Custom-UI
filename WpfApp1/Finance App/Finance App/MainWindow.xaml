@@ -36,7 +36,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    
+
+                    <Image Source="\Resource\F.png"/>
+
                     <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="0 10 50 0">
 
                         <Border BorderBrush="#5200a0" CornerRadius="2" BorderThickness="2" Height="55" Width="202">
