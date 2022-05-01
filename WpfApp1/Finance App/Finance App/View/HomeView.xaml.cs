@@ -80,12 +80,12 @@ namespace Finance_App.View
                 }
                 if (amount != 0)
                 {
-                    chartCatagory.Name = catagory.Name;
-                    chartCatagory.Icon = catagory.Icon;
+                    chartCatagory.Name = "z";
+                    //chartCatagory.Icon = catagory.Icon;
 
                     PieSeries pieSeries = new PieSeries();
-                    pieSeries.Title = catagory.Name;
-                    pieSeries.Values = new ChartValues<ObservableValue> { new ObservableValue(amount) };
+                    pieSeries.Title = "z";
+                    pieSeries.Values = new ChartValues<ObservableValue> { new ObservableValue(10) };
                     pieSeries.DataLabels = true;
                     seriesCollection.Add(pieSeries);
                     fullAmount += amount;
